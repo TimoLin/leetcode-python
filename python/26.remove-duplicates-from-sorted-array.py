@@ -3,6 +3,8 @@
 #
 # [26] Remove Duplicates from Sorted Array
 # Note: The given array is a sorted array which is easier to do it in-place.
+# Ref: https://leetcode.com/problems/remove-duplicates-from-sorted-array/solution/
+#      This solution is more faster (96ms, 78.07%).
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         # get how many duplicates of each different num
@@ -10,13 +12,9 @@ class Solution:
             return 0
 
         i = 0
-        while(i < len(nums)):
-            # i: The ith differet number
-            # n: The number of duplicates of the ith number
-            n = nums.count(nums[i])
-            if n > 1:
-                for nPop in range(1,n):
-                    # The element needs to be popped is always in (i+1)
-                    nums.pop(i+1)
-            i += 1
-        return i
+        for j in range(len(nums)):
+            if (nums[j] != nums[i]):
+                i += 1
+                nums[i] = nums[j]
+                
+        return i+1
