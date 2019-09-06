@@ -10,9 +10,10 @@ class Solution:
             return 0
         if (haystack == "" or len(haystack) < len(needle)) :
             return -1
-
-        for i in range(0,len(haystack)-len(needle)+1):
-            if (haystack[i:i+len(needle)] == needle):
+        n = len(haystack)-len(needle)+1
+        window = len(needle)
+        for i in range(0,n):
+            if (haystack[i:i+window] == needle):
                 return i
         
         return -1
