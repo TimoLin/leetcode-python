@@ -11,18 +11,13 @@ class Solution:
             return s
         
         n = len(s)
-        n_half = int((len(s)+1)/2)-1
-       
-        for i in range(n_half,0,-1):
-            # For "abcdaef"
-            if (s[0:i] == s[2*i:i:-1]):
-                return s[n:i:-1]+s[i:]
-            # For "abbacd"
-            elif (s[0:i] == s[2*i-1:i-1:-1]):
-                return s[n:2*i-1:-1]+s
-        # For "aabcd"
-        if (s[0] == s[1]):
-            return s[n:1:-1]+s
-        else:
-        # For "abcdef"
-            return s[:0:-1]+s
+
+        s_rever = s[::-1]
+        i_short = n-1 
+        for i in range(n-1):
+            s_new = s_rever[0:i+1]+s
+            if s_new == s_new[::-1]:
+                return s_new
+                break
+
+
